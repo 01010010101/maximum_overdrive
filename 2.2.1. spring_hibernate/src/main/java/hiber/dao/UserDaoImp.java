@@ -33,7 +33,11 @@ public class UserDaoImp implements UserDao {
    @Override
    @SuppressWarnings("unchecked")
    public List<User> getUsersByACar(String model, int series) {
-      Car car = carDao.getCarByMS(model, series).get(0);
+      List<Car> cars = carDao.getCarByMS(model, series);
+      if (cars.size() == 0) {
+         return null;
+      }
+      Car car = cars.get(0);
       TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User where car_id = :car_id");
       query.setParameter("car_id", car.getId());
       return query.getResultList();
