@@ -74,4 +74,8 @@ public class User {
    public void setCar(Car car) {
       this.car = car;
    }
+   @Override
+   public String toString() {
+      return String.format("User{id = %d, firstName = %s, lastName = %s,}", id, firstName, lastName);
+   }
 }
