@@ -26,13 +26,4 @@ public class CarDaoImp implements CarDao {
         return query.getResultList();
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Car> getCarByMS(String model, int series) {
-        TypedQuery<Car> query=sessionFactory.getCurrentSession().createQuery("from Car where model = :model and series = :series");
-        query.setParameter("model", model);
-        query.setParameter("series", series);
-        return query.getResultList();
-    }
-
 }
